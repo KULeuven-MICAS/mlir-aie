@@ -29,3 +29,7 @@ utils/vitisVariables.config
 runtime_lib/xaiengine/src
 /ironenv
 /.cache
+
+# trace artifacts
+*trace*.json
+*trace*.txt
