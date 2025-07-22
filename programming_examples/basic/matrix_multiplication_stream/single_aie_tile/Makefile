@@ -9,8 +9,10 @@
 ##===----------------------------------------------------------------------===##
 
 srcdir := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-subdir=single_core
-targetname=single_core
+$(info MAKEFILE_LIST = $(MAKEFILE_LIST))
+$(info srcdir = $(srcdir))
+subdir=single_aie_tile
+targetname=single_aie_tile
 kernels=mm
 
 # M, K, N: final GEMM dimensions
