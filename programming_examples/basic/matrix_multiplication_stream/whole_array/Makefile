@@ -22,7 +22,7 @@ m?=32
 k?=32
 n?=32
 
-n_aie_cols?=4
+n_aie_cols?=2
 b_col_maj?=0
 
 kernels=mm_${m}x${k}x${n}
