@@ -8,3 +8,5 @@
 // RUN: make -f %S/../Makefile clean use_chess=1
 // RUN: make -f %S/../Makefile use_chess=1
 // RUN: %run_on_npu1% make -f %S/../Makefile run use_chess=1
+// RUN: make -f %S/../Makefile clean use_chess=1
+// RUN: %run_on_npu1% make -f %S/../Makefile trace use_chess=1
