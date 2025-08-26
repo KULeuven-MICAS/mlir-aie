@@ -25,11 +25,14 @@ n?=32
 
 b_col_maj?=0
 
+nb_rows?=1
+nb_cols?=2
+
 kernels=mm_${m}x${k}x${n}
 aieargs+=-m $m -k $k -n $n --b-col-maj ${b_col_maj}
 # runargs?=-v 2 --warmup 0 --iters 1 --b_col_maj ${b_col_maj}
 runargs+=--b_col_maj ${b_col_maj}
-target_suffix=${M}x${K}x${N}_${m}x${k}x${n}
+target_suffix=${M}x${K}x${N}_${m}x${k}x${n}_${nb_rows}_row_${nb_cols}_col
 use_placed?=0
 use_iron?=0
 
