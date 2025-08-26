@@ -58,6 +58,9 @@ ifeq (${b_col_maj}, 1)
 	KERNEL_DEFINES+=-DB_COL_MAJ
 endif
 
+# Use dynamic object fifos
+use_dynamic_objFifos?=1
+
 include ${srcdir}/../makefile-common
 
 build/mm_${m}x${k}x${n}.o: ${kernels_dir}/mm.cc
