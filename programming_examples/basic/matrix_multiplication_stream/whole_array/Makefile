@@ -63,7 +63,7 @@ ifeq (${b_col_maj}, 1)
 endif
 
 # Use dynamic object fifos
-use_dynamic_objFifos?=1
+use_dynamic_objFifos?=0
 
 include ${srcdir}/../makefile-common
 
