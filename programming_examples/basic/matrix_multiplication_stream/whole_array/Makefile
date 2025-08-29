@@ -31,7 +31,7 @@ nb_cols?=2
 kernels=mm_${m}x${k}x${n}
 aieargs+=-m $m -k $k -n $n --b-col-maj ${b_col_maj}
 # runargs?=-v 2 --warmup 0 --iters 1 --b_col_maj ${b_col_maj}
-runargs+=--b_col_maj ${b_col_maj}
+runargs+=--b_col_maj ${b_col_maj} --warmup 1 --iters 5
 target_suffix=${M}x${K}x${N}_${m}x${k}x${n}_${nb_rows}_row_${nb_cols}_col
 use_placed?=0
 use_iron?=0
@@ -61,6 +61,9 @@ KERNEL_DEFINES=-D${dtype_in}_${dtype_out}_ONLY -DDIM_M=${m} -DDIM_K=${k} -DDIM_N
 ifeq (${b_col_maj}, 1)
 	KERNEL_DEFINES+=-DB_COL_MAJ
 endif
+
+# Use dynamic object fifos
+use_dynamic_objFifos?=1
 
 include ${srcdir}/../makefile-common
 
