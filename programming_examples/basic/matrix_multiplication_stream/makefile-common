@@ -173,7 +173,7 @@ ${xclbin_target}: ${mlir_target} ${kernels:%=build/%.o}
 
 ${trace_xclbin_target}: ${trace_mlir_target} ${kernels:%=build/%.o}
 	mkdir -p ${@D}
-	cd ${@D} && aiecc.py --alloc-scheme=${buffer_aloc_flag} ${aiecc_dynamic_objFifos_flag} --aie-generate-xclbin --no-compile-host --xclbin-name=${@F} \
+	cd ${@D} && aiecc.py --alloc-scheme=${buffer_aloc_flag} ${aiecc_dynamic_objFifos_flag} --no-unified --aie-generate-xclbin --no-compile-host --xclbin-name=${@F} \
 					${aiecc_peano_flags} \
 					--aie-generate-npu-insts --npu-insts-name=${insts_target:build/%=%} $(<:%=../%)
 
