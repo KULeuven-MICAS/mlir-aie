@@ -1,11 +1,11 @@
 ##===- Makefile -----------------------------------------------------------===##
-# 
+#
 # This file licensed under the Apache License v2.0 with LLVM Exceptions.
 # See https://llvm.org/LICENSE.txt for license information.
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
 # Copyright (C) 2025, Advanced Micro Devices, Inc.
-# 
+#
 ##===----------------------------------------------------------------------===##
 srcdir := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 subdir=whole_array
@@ -13,9 +13,9 @@ targetname=whole_array
 
 
 # M, K, N: final GEMM dimensions
-M?=512
-K?=512
-N?=512
+M?=384
+K?=96
+N?=2048
 
 # m, k, n: single AIE core GEMM dimensions
 m?=32
@@ -27,7 +27,7 @@ b_col_maj?=0
 
 kernels=mm_${m}x${k}x${n}
 aieargs+=-m $m -k $k -n $n --n-aie-cols ${n_aie_cols} --b-col-maj ${b_col_maj}
-runargs+=--b_col_maj ${b_col_maj}
+runargs+=--b_col_maj ${b_col_maj} --warmup 1000 --iters 10000 -v 1 --verify=false
 target_suffix=${M}x${K}x${N}_${m}x${k}x${n}_${n_aie_cols}c
 use_placed?=0
 use_iron?=0

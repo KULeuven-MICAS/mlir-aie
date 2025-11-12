@@ -11,6 +11,7 @@
 #include "cxxopts.hpp"
 #include <bits/stdc++.h>
 #include <chrono>
+#include <thread>
 #include <cstdint>
 #include <cstdlib>
 #include <ctime>
@@ -230,9 +231,9 @@ int main(int argc, const char *argv[]) {
       return 1;
     }
     auto stop = std::chrono::high_resolution_clock::now();
-    bo_out.sync(XCL_BO_SYNC_BO_FROM_DEVICE);
-    if (trace_size > 0)
-      bo_trace.sync(XCL_BO_SYNC_BO_FROM_DEVICE);
+    // bo_out.sync(XCL_BO_SYNC_BO_FROM_DEVICE);
+    // if (trace_size > 0)
+    //   bo_trace.sync(XCL_BO_SYNC_BO_FROM_DEVICE);
 
     if (iter < n_warmup_iterations) {
       /* Warmup iterations do not count towards average runtime. */
